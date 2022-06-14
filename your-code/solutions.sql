@@ -19,7 +19,8 @@ SELECT
 		au_fname as FIRST_NAME,
 		au_lname as LAST_NAME,
         pub.pub_name as PUBLISHER_NAME
-	FROM titles as t LEFT join titleauthor as ta
+	FROM titles as t 
+    LEFT join titleauthor as ta
 	on t.title_id = ta.title_id
 	LEFT JOIN authors as a
 	ON ta.au_id=a.au_id
@@ -47,7 +48,6 @@ SELECT
 
 
 #Challenge4
-
 SELECT 
 		ta.au_id as AUTHOR_ID,
 		au_lname as LAST_NAME,
