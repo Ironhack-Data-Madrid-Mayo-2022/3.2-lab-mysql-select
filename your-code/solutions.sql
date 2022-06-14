@@ -32,14 +32,32 @@ SELECT
 #CHALLENGE3
 SELECT 
 		ta.au_id as AUTHOR_ID,
-        count(title) as TITLE_COUNT, 
+		au_lname as LAST_NAME,
 		au_fname as FIRST_NAME,
-		au_lname as LAST_NAME
+        sum(sales.qty) as TOTAL
 	FROM titles as t LEFT join titleauthor as ta
 	on t.title_id = ta.title_id
 	LEFT JOIN authors as a
 	ON ta.au_id=a.au_id
-	JOIN sales on ta.title_id=sales.title_id
+	LEFT JOIN sales on ta.title_id=sales.title_id
     GROUP BY AUTHOR_ID, FIRST_NAME, LAST_NAME
-    ORDER BY TITLE_COUNT DESC
+    ORDER BY TOTAL DESC
 	LIMIT 3;
+
+
+
+#Challenge4
+
+SELECT 
+		ta.au_id as AUTHOR_ID,
+		au_lname as LAST_NAME,
+		au_fname as FIRST_NAME,
+        sum(sales.qty) as TOTAL
+	FROM titles as t LEFT join titleauthor as ta
+	on t.title_id = ta.title_id
+	LEFT JOIN authors as a
+	ON ta.au_id=a.au_id
+	LEFT JOIN sales on ta.title_id=sales.title_id
+    GROUP BY AUTHOR_ID, FIRST_NAME, LAST_NAME
+    ORDER BY TOTAL DESC
+	LIMIT 23;
